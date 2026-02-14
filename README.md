@@ -15,12 +15,19 @@ Fuentes → Staging → Limpieza → Reglas de Negocio → Dataset Final → Das
 Se integraron datos provenientes de diferentes formatos:
 
 Fuente	Formato	Descripción
+
 Ventas Online	CSV	Ventas realizadas por e-commerce
+
 Ventas Tienda	Excel	Ventas registradas en tiendas físicas
+
 Clientes	JSON	Base de clientes
+
 Stock Productos	CSV	Información de inventario
+
 Cotización Dólar	CSV	Tipo de cambio por fecha
+
 ⚙️ Procesos Implementados
+
 🔹 1. Normalización de Columnas
 
 Estandarización de nombres de columnas en todas las fuentes para facilitar integraciones.
@@ -44,14 +51,23 @@ Esto permite mantener trazabilidad sin eliminar registros.
 Se implementaron controles típicos de procesos ETL reales:
 
 Validación	Acción
+
 Fechas inválidas	Conversión con errors='coerce' y registro en etl_warning
+
 Cliente faltante	Asignación de ID -1 y warning
+
 Producto nulo o vacío	Marcado en etl_warning
+
 Nombre de cliente faltante	Warning tras integración
+
 Email inválido	Validación de formato básico
+
 Cotización faltante	Warning por imposibilidad de conversión a moneda local
+
 Importe nulo	Warning
+
 Importe convertido nulo	Warning
+
 🔹 5. Integraciones de Datos
 
 Unión de ventas con clientes por cliente_id
@@ -67,7 +83,9 @@ ventas['importe_pesos'] = ventas['importe'] * ventas['cotizacion']
 Se aplicaron reglas de plausibilidad para detectar valores imposibles:
 
 Regla	Objetivo
+
 Importes con magnitud extrema	Detectar errores de carga o formato
+
 Conversión fallida de moneda	Identificar datos incompletos
 
 Ejemplo:
@@ -95,13 +113,21 @@ Cantidad de ventas por canal
 Este proyecto permitió aplicar conceptos clave utilizados en entornos profesionales:
 
 ✔ Normalización de datos
+
 ✔ Estandarización de esquemas
+
 ✔ Data Quality Checks
+
 ✔ Logging de errores sin perder información
+
 ✔ Reglas de negocio vs reglas técnicas
+
 ✔ Manejo de valores nulos
+
 ✔ Integración de múltiples fuentes
+
 ✔ Creación de datasets analíticos
+
 ✔ Separación entre datos crudos, procesados y analíticos
 
 📌 Conclusiones del Proyecto
